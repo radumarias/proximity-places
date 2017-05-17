@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='ProximityPlaces'>
+	<!-- Inherit the core Web Toolkit stuff. -->
+	<inherits name='com.google.gwt.user.User' />
+
+	<!-- Inherit the default GWT style sheet. -->
+	<inherits name='com.google.gwt.user.theme.chrome.Chrome' />
+
+	<!-- Other module inherits -->
+	<inherits name="com.google.gwt.junit.JUnit" />
+	<inherits name="com.google.gwt.logging.Logging" />
+	<inherits name="com.google.gwt.i18n.I18N" />
+	<inherits name="com.google.web.bindery.requestfactory.RequestFactory" />
+	<inherits name="com.google.gwt.resources.Resources" />
+	<inherits name="com.google.gwt.http.HTTP" />
+	<inherits name="com.google.gwt.json.JSON" />
+	<inherits name="com.google.gwt.inject.Inject" />
+
+	<!-- Specify the paths for translatable code -->
+	<source path='client' />
+	<source path='shared' />
+
+
+	<!-- Configure module for Development Mode -->
+
+	<!-- Specify application entry point class with respect to user's rendering 
+		engine (user.agent property) -->
+	<entry-point
+		class='com.candor.interview_project_bogdan.client.AbstractEntryPoint' />
+
+	<!-- Render 'ProximityPlaces' entry point iff rendering engine in {safari, 
+		gecko1_8} -->
+	<replace-with
+		class="com.candor.interview_project_bogdan.client.ProximityPlaces">
+		<when-type-is
+			class="com.candor.interview_project_bogdan.client.AbstractEntryPoint" />
+		<any>
+			<when-property-is name="user.agent" value="safari" />
+			<when-property-is name="user.agent" value="gecko1_8" />
+		</any>
+	</replace-with>
+
+	<!-- Render 'Unknown' entry point otherwise {ie < 11} -->
+	<replace-with class="com.candor.interview_project_bogdan.client.Unknown">
+		<when-type-is
+			class="com.candor.interview_project_bogdan.client.AbstractEntryPoint" />
+		<none>
+			<when-property-is name="user.agent" value="safari" />
+			<when-property-is name="user.agent" value="gecko1_8" />
+		</none>
+	</replace-with>
+
+	<!-- start GWT Compiler Browser-sensitive deferred binding configuration -->
+
+	<!-- ie10 (~Standard DOMImpl) -->
+	<!-- ie10 will not be supported, but we need this setup as a convenience 
+		checking mechanism because IE versions <= 10 cannot fallback to anything 
+		other that IE specific permutations -->
+	<set-property name="user.agent" value="ie10" />
+	<!-- Firefox 3.0+, ie11 (Standard DOMImpl) -->
+	<extend-property name="user.agent" values="gecko1_8" />
+	<!-- Chrome, Safari, Opera 15+ (Standard DOMImpl) -->
+	<extend-property name="user.agent" values="safari" />
+	<!-- fallback value for user.agent - provides the bridge to handle unsupported 
+		rendering engines for which the default generator doesn't create any permutation; 
+		try setting as fallback the permutation having the smallest disk size -->
+	<set-property-fallback name="user.agent" value="safari" />
+
+	<!-- start GWT Compiler optimizations -->
+
+	<!-- reduces compiled JS size by stripping out GWT exception stack trace 
+		code; possible values: strip, native, emulated -->
+	<set-property name="compiler.stackMode" value="emulated" />
+	<!-- use this configuration if and only if you are not using enums as String 
+		values to reduce compiled JS size -->
+	<set-configuration-property name="compiler.enum.obfuscate.names"
+		value="false" />
+	<!-- Code Splitting - configure initial fragments load sequence to decrease 
+		load time; but be careful because if the fragments are loaded in an order 
+		different than the one you specified it will cause your loading time to increase -->
+	<extend-configuration-property name="compiler.splitpoint.initial.sequence"
+		value="com.candor.interview_project_bogdan.client.AppFrame" />
+	<!-- reduces compilation time by generating only one file no matter how 
+		many permutations/properties you have configured before this line; the uniquely 
+		generated file is slightly bigger, but per total there is a significant decrease 
+		in size -->
+	<collapse-all-properties />
+
+	<!-- end GWT Compiler optimizations -->
+
+	<!-- start Logger Settings -->
+
+	<!-- Set to FALSE to disable GWT logging -->
+	<set-property name="gwt.logging.enabled" value="TRUE" />
+
+	<!-- Set logLevel threshold - log all possible messages -->
+	<set-property name="gwt.logging.logLevel" value="ALL" />
+
+	<!-- Client-side logging handlers -->
+	<!-- Logs by calling method GWT.log(). These messages can only be seen in 
+		Development mode -->
+	<set-property name="gwt.logging.developmentModeHandler"
+		value="ENABLED" />
+
+	<!-- Logs to Java console. These messages can only be seen in Development 
+		mode -->
+	<set-property name="gwt.logging.systemHandler" value="ENABLED" />
+
+	<!-- Logs to the browser console – Firebug, Chrome Inspector, IE Developer 
+		Toolbar, etc. These show the messages in the browser in either web or development 
+		mode, but are not visible unless the user opens one of these consoles directly. 
+		Use this logging handler together with ClientLoggingUtils.logToConsole() 
+		method(s) in order to see logged messages when running in development mode 
+		on a remote server -->
+	<set-property name="gwt.logging.consoleHandler" value="ENABLED" />
+
+	<!-- Enables server-side logging; it also requires a properly configured 
+		remoteLoggingServlet to receive the logs -->
+	<set-property name="gwt.logging.simpleRemoteHandler"
+		value="DISABLED" />
+
+	<!-- end Logger Settings -->
+
+	<!-- Enable JavaScript Source Maps -->
+	<set-property name="compiler.useSourceMaps" value="true" />
+
+</module>
