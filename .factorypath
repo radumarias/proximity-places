@@ -1,3 +1,3 @@
 <factorypath>
-    <factorypathentry kind="WKSPJAR" id="/interview_project_bogdan/src/main/webapp/WEB-INF/lib/requestfactory-apt.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="WKSPJAR" id="/proximity-places/src/main/webapp/WEB-INF/lib/requestfactory-apt.jar" enabled="true" runInBatchMode="false"/>
 </factorypath>

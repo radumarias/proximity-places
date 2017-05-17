@@ -21,7 +21,7 @@
 	<!-- GWT RPC Servlet -->
 	<servlet>
 		<servlet-name>rpcServlet</servlet-name>
-		<servlet-class>com.candor.interview_project_bogdan.server.rpc.RpcServiceImpl</servlet-class>
+		<servlet-class>com.candor.bp.server.rpc.RpcServiceImpl</servlet-class>
 	</servlet>
 
 	<servlet-mapping>

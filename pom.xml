@@ -4,7 +4,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.candor</groupId>
-	<artifactId>interview_project_bogdan</artifactId>
+	<artifactId>bp</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1</version>
 	<name>Proximity Places™</name>
@@ -149,7 +149,7 @@
 					<runTarget>/proximity-places.html</runTarget>
 
 					<modules>
-						<module>com.candor.interview_project_bogdan.ProximityPlaces</module>
+						<module>com.candor.bp.ProximityPlaces</module>
 					</modules>
 
 					<port>2017</port>
@@ -158,9 +158,9 @@
 
 					<logLevel>INFO</logLevel>
 
-					<i18nConstantsBundle>com.candor.interview_project_bogdan.client.i18n.I18nConstants</i18nConstantsBundle>
-					<i18nConstantsWithLookupBundle>com.candor.interview_project_bogdan.client.i18n.I18nLookupConstants</i18nConstantsWithLookupBundle>
-					<i18nMessagesBundle>com.candor.interview_project_bogdan.client.i18n.I18nMessages</i18nMessagesBundle>
+					<i18nConstantsBundle>com.candor.bp.client.i18n.I18nConstants</i18nConstantsBundle>
+					<i18nConstantsWithLookupBundle>com.candor.bp.client.i18n.I18nLookupConstants</i18nConstantsWithLookupBundle>
+					<i18nMessagesBundle>com.candor.bp.client.i18n.I18nMessages</i18nMessagesBundle>
 
 					<generateDirectory>src/main/java</generateDirectory>
 
