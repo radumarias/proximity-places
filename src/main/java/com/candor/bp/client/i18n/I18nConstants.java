@@ -14,4 +14,13 @@ public interface I18nConstants extends com.google.gwt.i18n.client.Constants {
   @DefaultStringValue("bp")
   @Key("author")
   String author();
+
+  /**
+   * Translated "Requested resource is not available.".
+   * 
+   * @return translated "Requested resource is not available."
+   */
+  @DefaultStringValue("Requested resource is not available.")
+  @Key("resourceNotAvailable")
+  String resourceNotAvailable();
 }

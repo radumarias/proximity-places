@@ -18,22 +18,18 @@
 
 	<!-- Specify the paths for translatable code -->
 	<source path='client' />
-	<source path='shared' />
 
 
 	<!-- Configure module for Development Mode -->
 
 	<!-- Specify application entry point class with respect to user's rendering 
 		engine (user.agent property) -->
-	<entry-point
-		class='com.candor.bp.client.AbstractEntryPoint' />
+	<entry-point class='com.candor.bp.client.AbstractEntryPoint' />
 
 	<!-- Render 'ProximityPlaces' entry point iff rendering engine in {safari, 
 		gecko1_8} -->
-	<replace-with
-		class="com.candor.bp.client.ProximityPlaces">
-		<when-type-is
-			class="com.candor.bp.client.AbstractEntryPoint" />
+	<replace-with class="com.candor.bp.client.ProximityPlaces">
+		<when-type-is class="com.candor.bp.client.AbstractEntryPoint" />
 		<any>
 			<when-property-is name="user.agent" value="safari" />
 			<when-property-is name="user.agent" value="gecko1_8" />
@@ -41,9 +37,8 @@
 	</replace-with>
 
 	<!-- Render 'Unknown' entry point otherwise {ie < 11} -->
-	<replace-with class="com.candor.bp.client.Unknown">
-		<when-type-is
-			class="com.candor.bp.client.AbstractEntryPoint" />
+	<replace-with class="com.candor.bp.client.UnknownRenderingEngine">
+		<when-type-is class="com.candor.bp.client.AbstractEntryPoint" />
 		<none>
 			<when-property-is name="user.agent" value="safari" />
 			<when-property-is name="user.agent" value="gecko1_8" />

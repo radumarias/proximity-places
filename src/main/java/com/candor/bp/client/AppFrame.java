@@ -3,15 +3,24 @@
  */
 package com.candor.bp.client;
 
+import java.util.logging.Level;
+
+import com.candor.bp.client.gin.AppGinjector;
+import com.candor.bp.client.util.ClientLoggingUtils;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.RunAsyncCallback;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiConstructor;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.History;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.ResizeComposite;
 import com.google.gwt.user.client.ui.SimpleLayoutPanel;
-import com.google.gwt.user.client.ui.Widget;
+import com.google.inject.Inject;
 
 /**
- * Application main screen/socket/framework/skeleton.
+ * Application main screen/socket/framework/skeleton/controller - all-in-one.
  * 
  * @author bp
  *
@@ -26,30 +35,93 @@ public class AppFrame extends ResizeComposite {
 	@UiField
 	SimpleLayoutPanel context;
 
-	/**
-	 * Because this class has a default constructor, it can be used as a binder template. In other words, it can be used in other *.ui.xml files as follows:
-	 * <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder" xmlns:g=
-	 * "urn:import:**user's package**" > <g:**UserClassName**>Hello!</g:**UserClassName> </ui:UiBinder> Note that depending on the widget that is used, it may
-	 * be necessary to implement HasHTML instead of HasText.
-	 */
+	@Inject
+	@UiConstructor
 	public AppFrame() {
 		initWidget(uiBinder.createAndBindUi(this));
+		bind();
+	}
+
+	/*
+	 * Do binding.
+	 */
+	public void bind() {
+		// add {@link History} events handler.
+		History.addValueChangeHandler(event -> onHistoryEvent(event));
+
+		// do {@link History} initialization
+		History.fireCurrentHistoryState();
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Handle {@link History} events and navigation.
 	 */
-	protected SimpleLayoutPanel getContext() {
-		return context;
-	}
+	public void onHistoryEvent(ValueChangeEvent<String> event) {
+		/* Render {@link CityView} */
+		if (Token.CITY.equals(History.getToken()) || History.getToken().isEmpty()) {
+			/*
+			 * Code Splitting performance driven choice
+			 */
+			GWT.runAsync(new RunAsyncCallback() {
 
-	/**
-	 * 
-	 * @param widget
-	 */
-	protected void setContext(Widget widget) {
-		context.setWidget(widget);
+				@Override
+				public void onSuccess() {
+					AppGinjector.INSTANCE.getCityPresenter().go(context);
+				}
+				@Override
+				public void onFailure(Throwable reason) {
+					ClientLoggingUtils.logToConsole(Level.SEVERE, reason.getMessage());
+				}
+			});
+
+			// sync default view with {@link History} iff necessary
+			if (History.getToken().isEmpty()) {
+				History.newItem(Token.CITY, false);
+			}
+
+		}
+		/* Render {@link PlacesView} */
+		else if (Token.PLACES.equals(History.getToken())) {
+			/*
+			 * Code Splitting performance driven choice
+			 */
+			GWT.runAsync(new RunAsyncCallback() {
+
+				@Override
+				public void onSuccess() {
+					AppGinjector.INSTANCE.getPlacesPresenter().go(context);
+				}
+
+				@Override
+				public void onFailure(Throwable reason) {
+					ClientLoggingUtils.logToConsole(Level.SEVERE, reason.getMessage());
+				}
+			});
+
+		}
+		/* Render {@link PlaceDetailsView} */
+		else if (Token.PLACE_DETAILS.equals(History.getToken())) {
+			/*
+			 * Code Splitting performance driven choice
+			 */
+			GWT.runAsync(new RunAsyncCallback() {
+
+				@Override
+				public void onSuccess() {
+					AppGinjector.INSTANCE.getPlaceDetailsPresenter().go(context);
+				}
+
+				@Override
+				public void onFailure(Throwable reason) {
+					ClientLoggingUtils.logToConsole(Level.SEVERE, reason.getMessage());
+				}
+			});
+
+		}
+		/* Render 'Resource not available' */
+		else if (!History.getToken().isEmpty()) {
+			context.setWidget(new HTML("<h2 style='text-align: center;'>" + AppGinjector.INSTANCE.getConstants().resourceNotAvailable() + "</h2>"));
+		}
 	}
 
 }

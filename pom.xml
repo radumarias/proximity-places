@@ -160,7 +160,8 @@
 
 					<i18nConstantsBundle>com.candor.bp.client.i18n.I18nConstants</i18nConstantsBundle>
 					<i18nConstantsWithLookupBundle>com.candor.bp.client.i18n.I18nLookupConstants</i18nConstantsWithLookupBundle>
-					<i18nMessagesBundle>com.candor.bp.client.i18n.I18nMessages</i18nMessagesBundle>
+					<!-- do not generate Messages, we are using @Plural forms -->
+					<!-- <i18nMessagesBundle>com.candor.bp.client.i18n.I18nMessages</i18nMessagesBundle> -->
 
 					<generateDirectory>src/main/java</generateDirectory>
 

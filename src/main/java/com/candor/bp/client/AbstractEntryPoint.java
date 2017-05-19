@@ -8,7 +8,8 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
- * {@link EntryPoint} marker abstract class used in order to demonstrate deferred binding and runtime replacements.
+ * {@link EntryPoint} marker abstract class used in order to demonstrate deferred binding and
+ * runtime replacements.
  * <p>
  * To be extended by all {@link EntryPoint} providers.
  * 
