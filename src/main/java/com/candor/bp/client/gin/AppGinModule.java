@@ -4,6 +4,7 @@
 package com.candor.bp.client.gin;
 
 import com.candor.bp.client.AppFrame;
+import com.candor.bp.client.DataManager;
 import com.candor.bp.client.i18n.I18nConstants;
 import com.candor.bp.client.i18n.I18nLookupConstants;
 import com.candor.bp.client.i18n.I18nMessages;
@@ -46,7 +47,7 @@ public class AppGinModule extends AbstractGinModule {
 	 */
 	@Override
 	protected void configure() {
-		/* bind the EventBus */
+		/* bind the EventBus as {@link Singleton} */
 		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
 
 		/* bind 18n {@link Constants} */
@@ -66,6 +67,9 @@ public class AppGinModule extends AbstractGinModule {
 
 		/* bind framework as {@link Singleton} */
 		bind(AppFrame.class).in(Singleton.class);
+
+		/* bind {@link DataManager} as {@link Singleton} */
+		bind(DataManager.class).in(Singleton.class);
 	}
 
 }

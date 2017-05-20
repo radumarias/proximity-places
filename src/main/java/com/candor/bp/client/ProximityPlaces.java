@@ -17,7 +17,9 @@ public class ProximityPlaces extends AbstractEntryPoint {
 	 */
 	public void onModuleLoad() {
 		/*
-		 * Code Splitting performance driven choice
+		 * Code Splitting performance driven choice.
+		 * 
+		 * This fragment is named as it is part of the initial fragments load sequence.
 		 * 
 		 * Render {@link AppFrame} framework.
 		 */

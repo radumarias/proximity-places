@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.candor.bp.client.reqbuilder;
+package com.candor.bp.client.google.place.callback;
 
 import java.util.logging.Level;
 
@@ -19,8 +19,11 @@ public interface HasErrorHandlers {
 	 * Provide error handling.
 	 * <p>
 	 * Contains default implementation.
+	 * 
+	 * @param t
+	 * 
 	 */
-	default void onError() {
-		ClientLoggingUtils.logToConsole(Level.SEVERE, "Error caught in scope of class " + getClass().getName());
+	default void onError(Throwable t) {
+		ClientLoggingUtils.logToConsole(Level.SEVERE, t != null ? t.getMessage() : "Error caught in scope of class " + getClass().getName());
 	}
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.candor.bp.client.util.google;
+package com.candor.bp.client.google.place;
 
 /**
  * <code>enum</code> listing the supported values for the types property in the Google Places API.
@@ -51,17 +51,17 @@ public enum PlaceType {
 	
 	//@formatter:on
 
-	private final String placeType;
+	private final String typeName;
 
-	PlaceType(String placeType) {
-		this.placeType = placeType;
+	PlaceType(String typeName) {
+		this.typeName = typeName;
 	}
 
 	/**
-	 * @return the placeType
+	 * @return {@link #typeName}
 	 */
-	public String getPlaceType() {
-		return placeType;
+	public String getTypeName() {
+		return typeName;
 	}
 
 }
