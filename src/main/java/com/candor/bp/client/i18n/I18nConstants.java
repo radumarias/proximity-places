@@ -16,6 +16,33 @@ public interface I18nConstants extends com.google.gwt.i18n.client.Constants {
   String author();
 
   /**
+   * Translated "Closed".
+   * 
+   * @return translated "Closed"
+   */
+  @DefaultStringValue("Closed")
+  @Key("closed")
+  String closed();
+
+  /**
+   * Translated "Open Now".
+   * 
+   * @return translated "Open Now"
+   */
+  @DefaultStringValue("Open Now")
+  @Key("open")
+  String open();
+
+  /**
+   * Translated "Rating".
+   * 
+   * @return translated "Rating"
+   */
+  @DefaultStringValue("Rating")
+  @Key("rating")
+  String rating();
+
+  /**
    * Translated "Requested resource is not available.".
    * 
    * @return translated "Requested resource is not available."

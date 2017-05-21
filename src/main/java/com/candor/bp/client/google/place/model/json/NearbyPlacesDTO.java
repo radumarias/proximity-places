@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.candor.bp.client.google.place.model;
+package com.candor.bp.client.google.place.model.json;
 
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;

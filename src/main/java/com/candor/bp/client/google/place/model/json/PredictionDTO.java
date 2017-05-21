@@ -1,4 +1,4 @@
-package com.candor.bp.client.google.place.model;
+package com.candor.bp.client.google.place.model.json;
 
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
@@ -49,7 +49,8 @@ public class PredictionDTO {
 	 * Property <b>defined</b> in JavaScript world; i.e. attribute will neither be renamed, nor will
 	 * it be pruned
 	 */
-	protected String place_id;
+	@JsProperty(name = "place_id")
+	protected String placeId;
 
 	/* getters & setters */
 
@@ -82,14 +83,14 @@ public class PredictionDTO {
 	/**
 	 * @return the place_id
 	 */
-	@JsProperty
-	public native String getPlace_id();
+	@JsProperty(name = "place_id")
+	public native String getPlaceId();
 
 	/**
 	 * @param place_id
 	 *            the place_id to set
 	 */
-	@JsProperty
-	public native void setPlace_id(String place_id);
+	@JsProperty(name = "place_id")
+	public native void setPlaceId(String placeId);
 
 }

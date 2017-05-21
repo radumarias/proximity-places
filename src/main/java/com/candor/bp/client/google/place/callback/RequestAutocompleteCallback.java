@@ -1,6 +1,6 @@
 package com.candor.bp.client.google.place.callback;
 
-import com.candor.bp.client.google.place.model.PredictionDTO;
+import com.candor.bp.client.google.place.model.json.PredictionDTO;
 import com.google.gwt.http.client.RequestCallback;
 
 /**

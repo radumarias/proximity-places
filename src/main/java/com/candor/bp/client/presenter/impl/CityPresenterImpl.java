@@ -3,6 +3,9 @@
  */
 package com.candor.bp.client.presenter.impl;
 
+import com.candor.bp.client.datapresentation.PredictionsCellList;
+import com.candor.bp.client.event.SelectPlaceEvent;
+import com.candor.bp.client.gin.AppGinjector;
 import com.candor.bp.client.presenter.CityPresenter;
 import com.candor.bp.client.view.CityView;
 import com.google.gwt.user.client.ui.HasOneWidget;
@@ -38,6 +41,18 @@ public class CityPresenterImpl implements CityPresenter {
 	@Override
 	public void bind() {
 		view.setPresenter(this);
+		addEventBusHandlers();
+	}
+
+	/**
+	 * Register handlers on the BUS
+	 */
+	private void addEventBusHandlers() {
+
+		AppGinjector.INSTANCE.getEventBus().addHandlerToSource(SelectPlaceEvent.TYPE, PredictionsCellList.class, event -> {
+			// get place details and update the view
+		});
+
 	}
 
 }

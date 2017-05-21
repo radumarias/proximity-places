@@ -6,7 +6,7 @@ package com.candor.bp.client.google.place;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.candor.bp.client.google.place.model.CoordinateDTO;
+import com.candor.bp.client.google.place.model.json.CoordinateDTO;
 import com.candor.bp.client.reqbuilder.ReqBuilder;
 
 /**
@@ -32,7 +32,7 @@ public final class PlaceApiUtils {
 	 */
 	public static final String API_KEY;
 	static {
-		API_KEY = "AIzaSyAZ69XqWS2EL-dJsiZ2XHl0Xtnub8_Il6I";
+		API_KEY = "AIzaSyAJooCebBfpjwU4tMnAN_0ZY9xemMmdfA0";
 	}
 
 	public static final String BASE_URL;
@@ -122,6 +122,11 @@ public final class PlaceApiUtils {
 	public static final String RADIUS_PARAM;
 	static {
 		RADIUS_PARAM = "radius=";
+	}
+
+	public static final String PAGE_TOKEN_PARAM;
+	static {
+		PAGE_TOKEN_PARAM = "pagetoken=";
 	}
 
 	/* helper methods */

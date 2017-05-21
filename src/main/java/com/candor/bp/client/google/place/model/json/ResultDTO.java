@@ -1,4 +1,4 @@
-package com.candor.bp.client.google.place.model;
+package com.candor.bp.client.google.place.model.json;
 
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
@@ -25,6 +25,8 @@ public class ResultDTO {
 	protected GeometryDTO geometry;
 
 	protected String icon;
+
+	protected String id;
 
 	protected String international_phone_number;
 
@@ -241,5 +243,18 @@ public class ResultDTO {
 	 */
 	@JsProperty
 	public native void setPhotos(PhotoDTO[] photos);
+
+	/**
+	 * @return the id
+	 */
+	@JsProperty
+	public native String getId();
+
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	@JsProperty
+	public native void setId(String id);
 
 }

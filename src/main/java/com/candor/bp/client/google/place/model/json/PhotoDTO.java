@@ -1,4 +1,4 @@
-package com.candor.bp.client.google.place.model;
+package com.candor.bp.client.google.place.model.json;
 
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
@@ -19,7 +19,8 @@ public class PhotoDTO {
 
 	protected int height;
 
-	protected String photo_reference;
+	@JsProperty(name = "photo_reference")
+	protected String photoReference;
 
 	protected int width;
 
@@ -41,15 +42,15 @@ public class PhotoDTO {
 	/**
 	 * @return the photo_reference
 	 */
-	@JsProperty
-	public native String getPhoto_reference();
+	@JsProperty(name = "photo_reference")
+	public native String getPhotoReference();
 
 	/**
 	 * @param photo_reference
 	 *            the photo_reference to set
 	 */
-	@JsProperty
-	public native void setPhoto_reference(String photo_reference);
+	@JsProperty(name = "photo_reference")
+	public native void setPhotoReference(String photo_reference);
 
 	/**
 	 * @return the width

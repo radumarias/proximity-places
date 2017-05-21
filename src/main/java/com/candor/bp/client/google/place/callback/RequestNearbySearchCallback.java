@@ -3,7 +3,7 @@
  */
 package com.candor.bp.client.google.place.callback;
 
-import com.candor.bp.client.google.place.model.NearbyPlacesDTO;
+import com.candor.bp.client.google.place.model.json.NearbyPlacesDTO;
 import com.google.gwt.http.client.RequestCallback;
 
 /**

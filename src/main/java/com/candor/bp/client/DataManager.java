@@ -11,8 +11,8 @@ import com.candor.bp.client.google.place.callback.RequestAutocompleteCallback;
 import com.candor.bp.client.google.place.callback.RequestDetailsCallback;
 import com.candor.bp.client.google.place.callback.RequestNearbySearchCallback;
 import com.candor.bp.client.google.place.callback.RequestPhotoCallback;
-import com.candor.bp.client.google.place.model.AutocompleteDTO;
-import com.candor.bp.client.google.place.model.CoordinateDTO;
+import com.candor.bp.client.google.place.model.json.AutocompleteDTO;
+import com.candor.bp.client.google.place.model.json.CoordinateDTO;
 import com.candor.bp.client.jsi.JSON;
 import com.candor.bp.client.reqbuilder.ReqBuilder;
 import com.google.gwt.http.client.Header;
@@ -215,6 +215,52 @@ public final class DataManager {
 				+ "&" +  PlaceApiUtils.RADIUS_PARAM + radius
 			    + "&" + PlaceApiUtils.parseTypes(types)
 			    + "&" + PlaceApiUtils.parseKeyword(keyword),
+				null,
+				new RequestCallback() {
+				//@formatter:on
+					@Override
+					public void onResponseReceived(Request request, Response response) {
+						if (callback != null) {
+							// SUCCESS
+							if (200 == response.getStatusCode()) {
+								callback.onComplete(JSON.parse(response.getText()));
+							}
+							// otherwise
+							else {
+								callback.onError(null);
+							}
+						} else {
+							throw new IllegalArgumentException("arg0 cannot be null");
+						}
+					}
+
+					@Override
+					public void onError(Request request, Throwable exception) {
+						if (callback != null) {
+							callback.onError(exception);
+						} else {
+							throw new IllegalArgumentException("arg0 cannot be null");
+						}
+					}
+				});
+	}
+
+	/**
+	 * Perform XMLHttpRequest.GET to fetch nearby places from Google Places.
+	 * 
+	 * @param callback
+	 *            {@link RequestNearbySearchCallback}
+	 * @param nextPageToken
+	 */
+	public void getNearbyPlacesNextPage(final RequestNearbySearchCallback callback, final String nextPageToken) {
+		/* perform XMLHttpRequest.GET */
+		//@formatter:off
+		ReqBuilder.doRequest(
+				RequestBuilder.GET,
+				PlaceApiUtils.BASE_URL + PlaceApiUtils.NEARBY_ENTRY_POINT
+				   					   + PlaceApiUtils.OUTPUT + "?"
+				   					   + PlaceApiUtils.KEY_PARAM + PlaceApiUtils.API_KEY,
+				"&" + PlaceApiUtils.PAGE_TOKEN_PARAM + nextPageToken,
 				null,
 				new RequestCallback() {
 				//@formatter:on
