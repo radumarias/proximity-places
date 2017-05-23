@@ -10,15 +10,19 @@ import com.candor.bp.client.i18n.I18nLookupConstants;
 import com.candor.bp.client.i18n.I18nMessages;
 import com.candor.bp.client.presenter.CityPresenter;
 import com.candor.bp.client.presenter.PlaceDetailsPresenter;
+import com.candor.bp.client.presenter.PlacesMapPresenter;
 import com.candor.bp.client.presenter.PlacesPresenter;
 import com.candor.bp.client.presenter.impl.CityPresenterImpl;
 import com.candor.bp.client.presenter.impl.PlaceDetailsPresenterImpl;
+import com.candor.bp.client.presenter.impl.PlacesMapPresenterImpl;
 import com.candor.bp.client.presenter.impl.PlacesPresenterImpl;
 import com.candor.bp.client.view.CityView;
 import com.candor.bp.client.view.PlaceDetailsView;
+import com.candor.bp.client.view.PlacesMapView;
 import com.candor.bp.client.view.PlacesView;
 import com.candor.bp.client.view.impl.CityViewImpl;
 import com.candor.bp.client.view.impl.PlaceDetailsViewImpl;
+import com.candor.bp.client.view.impl.PlacesMapViewImpl;
 import com.candor.bp.client.view.impl.PlacesViewImpl;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.SimpleEventBus;
@@ -59,11 +63,13 @@ public class AppGinModule extends AbstractGinModule {
 		bind(CityView.class).to(CityViewImpl.class).in(Singleton.class);
 		bind(PlacesView.class).to(PlacesViewImpl.class).in(Singleton.class);
 		bind(PlaceDetailsView.class).to(PlaceDetailsViewImpl.class).in(Singleton.class);
+		bind(PlacesMapView.class).to(PlacesMapViewImpl.class).in(Singleton.class);
 
 		/* bind presenters */
 		bind(CityPresenter.class).to(CityPresenterImpl.class);
 		bind(PlacesPresenter.class).to(PlacesPresenterImpl.class);
 		bind(PlaceDetailsPresenter.class).to(PlaceDetailsPresenterImpl.class);
+		bind(PlacesMapPresenter.class).to(PlacesMapPresenterImpl.class);
 
 		/* bind framework as {@link Singleton} */
 		bind(AppFrame.class).in(Singleton.class);

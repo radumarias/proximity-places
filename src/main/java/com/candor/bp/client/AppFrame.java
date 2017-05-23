@@ -5,8 +5,10 @@ package com.candor.bp.client;
 
 import java.util.logging.Level;
 
+import com.candor.bp.client.event.ViewPlacesMapEvent;
 import com.candor.bp.client.gin.AppGinjector;
 import com.candor.bp.client.util.ClientLoggingUtils;
+import com.candor.bp.client.view.PlacesView;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.RunAsyncCallback;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -46,7 +48,10 @@ public class AppFrame extends ResizeComposite {
 	 * Do binding.
 	 */
 	public void bind() {
-		// add {@link History} events handler.
+		// handle bus events
+		addEventBusHandlers();
+
+		// add {@link History} events handler
 		History.addValueChangeHandler(event -> onHistoryEvent(event));
 
 		// do {@link History} initialization
@@ -122,6 +127,17 @@ public class AppFrame extends ResizeComposite {
 		else if (!History.getToken().isEmpty()) {
 			context.setWidget(new HTML("<h2 style='text-align: center;'>" + AppGinjector.INSTANCE.getConstants().resourceNotAvailable() + "</h2>"));
 		}
+	}
+
+	/**
+	 * Register handlers on the BUS
+	 */
+	private void addEventBusHandlers() {
+
+		AppGinjector.INSTANCE.getEventBus().addHandlerToSource(ViewPlacesMapEvent.TYPE, PlacesView.class, event -> {
+			// show {@link PlacesMapView]
+		});
+
 	}
 
 }

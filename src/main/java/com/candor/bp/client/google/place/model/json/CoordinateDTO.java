@@ -3,6 +3,7 @@
  */
 package com.candor.bp.client.google.place.model.json;
 
+import jsinterop.annotations.JsOverlay;
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
@@ -39,4 +40,13 @@ public class CoordinateDTO {
 
 	@JsProperty(name = "lng")
 	public native void setLongitude(double lng);
+
+	/* convenience methods */
+
+	@JsOverlay
+	public final CoordinateDTO bundle(double lat, double lng) {
+		setLatitude(lat);
+		setLongitude(lng);
+		return this;
+	}
 }

@@ -10,9 +10,11 @@ import com.candor.bp.client.i18n.I18nLookupConstants;
 import com.candor.bp.client.i18n.I18nMessages;
 import com.candor.bp.client.presenter.CityPresenter;
 import com.candor.bp.client.presenter.PlaceDetailsPresenter;
+import com.candor.bp.client.presenter.PlacesMapPresenter;
 import com.candor.bp.client.presenter.PlacesPresenter;
 import com.candor.bp.client.view.CityView;
 import com.candor.bp.client.view.PlaceDetailsView;
+import com.candor.bp.client.view.PlacesMapView;
 import com.candor.bp.client.view.PlacesView;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.EventBus;
@@ -41,11 +43,13 @@ public interface AppGinjector extends Ginjector {
 	CityView getCityView();
 	PlacesView getPlacesView();
 	PlaceDetailsView getPlaceDetailsView();
+	PlacesMapView getPlacesMapView();
 
 	// presenter
 	CityPresenter getCityPresenter();
 	PlacesPresenter getPlacesPresenter();
 	PlaceDetailsPresenter getPlaceDetailsPresenter();
+	PlacesMapPresenter getPlacesMapPresnter();
 
 	// framework
 	AppFrame getAppFrame();

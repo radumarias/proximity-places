@@ -40,4 +40,14 @@ public class PlacesPresenterImpl implements PlacesPresenter {
 		view.setPresenter(this);
 	}
 
+	private void onViewPlacesMap() {
+		// city := current city coord
+		// places := collection of sll visible places
+		/**
+		 * Fire event to be handled upstream
+		 */
+		// AppGinjector.INSTANCE.getEventBus().fireEventFromSource(new ViewPlacesMapEvent(city,
+		// places), PlacesView.class);
+	}
+
 }
