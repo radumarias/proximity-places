@@ -22,6 +22,8 @@ public class OpeningHoursDTO {
 
 	protected boolean open_now;
 
+	protected String[] weekday_text;
+
 	/* getters & setters */
 
 	/**
@@ -36,5 +38,18 @@ public class OpeningHoursDTO {
 	 */
 	@JsProperty
 	public native void setOpen_now(boolean open_now);
+
+	/**
+	 * @return the weekday_text
+	 */
+	@JsProperty
+	public native String[] getWeekday_text();
+
+	/**
+	 * @param weekday_text
+	 *            the weekday_text to set
+	 */
+	@JsProperty
+	public native void setWeekday_text(String[] weekday_text);
 
 }

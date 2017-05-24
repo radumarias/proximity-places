@@ -67,25 +67,24 @@ public class ResultCell extends AbstractCell<ResultMO> {
 							+ "<!-- rigth -->"
 							+ "<div class='right'>"
 								+ "<h4 class='name'>{3}</h4>"
-								+ "<p class='description'>{4}</p>"
-								+ "<a target='_blank' href='{5}'>{5}</a>"
+								+ "<p class='vicinity'>{4}</p>"
 							+ "</div>"
 						+ "</section>"
 							
 						+ "<!-- footer -->"
 						+ "<footer>"
 							+ "<div class='rating'>"
-								+ "<em>{6}</em>"
-								+ "<span>{7}</span>"
+								+ "<em>{5}&nbsp;</em>"
+								+ "<span>{6}</span>"
 							+ "</div>"
 							+ "<div class='openingHours'>"
-								+ "{8}"
+								+ "{7}"
 							+ "</div>"
 						+ "</footer>"
 				 + "</div>")
 		//@formatter:on
-		SafeHtml build(String iconUrl, String types, String photoElementId, String name, String description, String websiteUrl, String ratingLabel,
-				double rating, String openingHours);
+		SafeHtml build(String iconUrl, String types, String photoElementId, String name, String vicinity, String ratingLabel, double rating,
+				String openingHours);
 	}
 
 	/*
@@ -122,7 +121,7 @@ public class ResultCell extends AbstractCell<ResultMO> {
 			final String photoElemId = String.valueOf(id);
 			id++;
 
-			sb.append(template.build(value.getIcon(), value.getTypes().toString(), photoElemId, value.getName(), value.getDescription(), value.getWebsite(),
+			sb.append(template.build(value.getIcon(), value.getTypes().toString(), photoElemId, value.getName(), value.getVicinity(),
 					AppGinjector.INSTANCE.getConstants().rating(), value.getRating(), getOpeningHoursStatus(value.getOpening_hours())));
 
 			// set photo URL in scope of a separate asynchronous call

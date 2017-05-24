@@ -1,10 +1,40 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:bp="urn:import:com.candor.bp.client.datapresentation">
 	<ui:style>
+	input[type="text"] {
+		width: 100%;
+		font-family: sans-serif;
+		font-size: 20px;
+		border-radius: 6px;
+		padding: 14px;
+		border: solid 1px #dcdcdc;
+		transition: box-shadow 0.3s, border 0.3s;
+	}
 	
+	input[type="text"]:focus, input[type="text"].focus {
+		border: solid 1px #cbcbcb;
+		box-shadow: 0 0 5px 1px #969696;
+	}
+	
+	.box {
+		margin: 100px auto 0px;
+		width: 400px;
+	}
+	
+	.list {
+		margin: 0px auto;
+		width: 400px;
+		cursor: pointer;
+		font-size: 18px;
+		color: #333;
+	}
 	</ui:style>
 	<g:HTMLPanel>
-		<h1>Search for your City</h1>
+		<div class="{style.box}">
+			<g:TextBox ui:field="searchBox"></g:TextBox>
+		</div>
+		<bp:PredictionsCellList ui:field="suggestList"
+			styleName="{style.list}"></bp:PredictionsCellList>
 	</g:HTMLPanel>
 </ui:UiBinder> 

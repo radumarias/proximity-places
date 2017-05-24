@@ -6,4 +6,6 @@ package com.candor.bp.client.presenter;
  */
 public interface CityPresenter extends Presenter {
 
+	public void onSearchBoxKeyUpEvent(String value);
+
 }

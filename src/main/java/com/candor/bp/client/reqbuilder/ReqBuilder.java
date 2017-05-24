@@ -44,9 +44,10 @@ public final class ReqBuilder {
 	 */
 	public static void doRequest(Method method, String baseUrl, String urlSuffix, String data, RequestCallback requestCallback) {
 		final RequestBuilder requestBuilder = new RequestBuilder(method, urlSuffix != null ? baseUrl + urlSuffix : baseUrl);
+		requestBuilder.setHeader("Access-Control-Allow-Origin", "*");
+		requestBuilder.setHeader("Access-Control-Allow-Headers", "*");
 		requestBuilder.setHeader("X-Requested-With", "XMLHttpRequest");
 		requestBuilder.setHeader("If-Modified-Since", "01 Jan 1970 00:00:00 GMT");
-		requestBuilder.setHeader("Access-Control-Allow-Origin", "*");
 		requestBuilder.setHeader("Content-Type", "application/json; charset=utf-8");
 		requestBuilder.setHeader("Accept", "application/json; charset=utf-8");
 

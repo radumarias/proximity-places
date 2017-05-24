@@ -38,7 +38,7 @@ public class PredictionCell extends AbstractCell<PredictionMO> {
 		//@formatter:off
 		@Template("<div class='cell prediction'>"
 						+ "<section class='content'>"
-							+ "<h4>{0}</h4>"
+							+ "<p>{0}</p>"
 						+ "</section>"
 				 + "</div>")
 		//@formatter:on

@@ -30,7 +30,7 @@ public class PredictionMO extends PredictionDTO {
 	}
 
 	public PredictionMO(PredictionDTO dto) {
-		this(dto.getId(), dto.getPlaceId(), dto.getPlaceId());
+		this(dto.getId(), dto.getPlaceId(), dto.getDescription());
 	}
 
 	/* getters & setters */
