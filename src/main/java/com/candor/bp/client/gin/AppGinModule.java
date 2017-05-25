@@ -27,6 +27,7 @@ import com.candor.bp.client.view.impl.PlacesViewImpl;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.inject.client.AbstractGinModule;
+import com.google.gwt.inject.client.assistedinject.GinFactoryModuleBuilder;
 import com.google.inject.Singleton;
 
 /**
@@ -40,17 +41,17 @@ public class AppGinModule extends AbstractGinModule {
 		// nothing to do
 	}
 
-	// @Provides
-	// @Singleton
-	// public HandlerManager getEventBus() {
-	// return new HandlerManager(null);
-	// }
-
 	/**
 	 * Configure GIN i.e. {@link AbstractGinModule#configure()}
 	 */
 	@Override
 	protected void configure() {
+		/* install new {@code GinFactoryModuleBuilder} */
+		install(new GinFactoryModuleBuilder().implement(PlacesPresenter.class, PlacesPresenterImpl.class).build(PlacesFactory.class));
+
+		/* bind {@code PlacesFactory} as {@code Singleton} */
+		bind(PlacesFactory.class).in(Singleton.class);
+
 		/* bind the EventBus as {@link Singleton} */
 		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
 
@@ -67,7 +68,6 @@ public class AppGinModule extends AbstractGinModule {
 
 		/* bind presenters */
 		bind(CityPresenter.class).to(CityPresenterImpl.class);
-		bind(PlacesPresenter.class).to(PlacesPresenterImpl.class);
 		bind(PlaceDetailsPresenter.class).to(PlaceDetailsPresenterImpl.class);
 		bind(PlacesMapPresenter.class).to(PlacesMapPresenterImpl.class);
 

@@ -86,7 +86,7 @@ public class AppFrame extends ResizeComposite {
 
 		}
 		/* Render {@link PlacesView} */
-		else if (Token.PLACES.equals(History.getToken())) {
+		else if (History.getToken().startsWith(Token.PLACES)) {
 			/*
 			 * Code Splitting performance driven choice
 			 */
@@ -94,9 +94,12 @@ public class AppFrame extends ResizeComposite {
 
 				@Override
 				public void onSuccess() {
-					AppGinjector.INSTANCE.getPlacesPresenter().go(context);
+					try {
+						AppGinjector.INSTANCE.getPlacesFactory().build(History.getToken().split("cityid=")[1].trim()).go(context);
+					} catch (Exception e) {
+						ClientLoggingUtils.logToConsole(Level.SEVERE, e.getMessage());
+					}
 				}
-
 				@Override
 				public void onFailure(Throwable reason) {
 					ClientLoggingUtils.logToConsole(Level.SEVERE, reason.getMessage());

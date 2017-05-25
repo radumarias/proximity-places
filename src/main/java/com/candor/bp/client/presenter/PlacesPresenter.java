@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.candor.bp.client.presenter;
 
 /**
@@ -8,5 +5,7 @@ package com.candor.bp.client.presenter;
  *
  */
 public interface PlacesPresenter extends Presenter {
+
+	String getCityId();
 
 }

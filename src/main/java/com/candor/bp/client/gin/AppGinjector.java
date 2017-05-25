@@ -11,7 +11,6 @@ import com.candor.bp.client.i18n.I18nMessages;
 import com.candor.bp.client.presenter.CityPresenter;
 import com.candor.bp.client.presenter.PlaceDetailsPresenter;
 import com.candor.bp.client.presenter.PlacesMapPresenter;
-import com.candor.bp.client.presenter.PlacesPresenter;
 import com.candor.bp.client.view.CityView;
 import com.candor.bp.client.view.PlaceDetailsView;
 import com.candor.bp.client.view.PlacesMapView;
@@ -31,6 +30,9 @@ public interface AppGinjector extends Ginjector {
 	/* {@link AppGinjector} compile time constant */
 	public static final AppGinjector INSTANCE = GWT.create(AppGinjector.class);
 
+	// factory
+	PlacesFactory getPlacesFactory();
+
 	// event bus
 	EventBus getEventBus();
 
@@ -47,7 +49,6 @@ public interface AppGinjector extends Ginjector {
 
 	// presenter
 	CityPresenter getCityPresenter();
-	PlacesPresenter getPlacesPresenter();
 	PlaceDetailsPresenter getPlaceDetailsPresenter();
 	PlacesMapPresenter getPlacesMapPresnter();
 

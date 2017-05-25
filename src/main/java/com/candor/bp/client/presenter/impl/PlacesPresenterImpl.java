@@ -1,24 +1,26 @@
-/**
- * 
- */
 package com.candor.bp.client.presenter.impl;
 
 import com.candor.bp.client.presenter.PlacesPresenter;
 import com.candor.bp.client.view.PlacesView;
 import com.google.gwt.user.client.ui.HasOneWidget;
 import com.google.inject.Inject;
+import com.google.inject.assistedinject.Assisted;
 
 /**
  * @author bp
  *
  */
+
 public class PlacesPresenterImpl implements PlacesPresenter {
 
 	private PlacesView view;
 
+	private final String cityId;
+
 	@Inject
-	public PlacesPresenterImpl(PlacesView view) {
+	public PlacesPresenterImpl(PlacesView view, @Assisted String cityId) {
 		this.view = view;
+		this.cityId = cityId;
 		bind();
 	}
 
@@ -38,6 +40,14 @@ public class PlacesPresenterImpl implements PlacesPresenter {
 	@Override
 	public void bind() {
 		view.setPresenter(this);
+	}
+
+	/**
+	 * @return the city id
+	 */
+	@Override
+	public String getCityId() {
+		return cityId;
 	}
 
 	private void onViewPlacesMap() {
