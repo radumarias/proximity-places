@@ -43,7 +43,7 @@ public final class ReqBuilder {
 	 *            {@link RequestCallback} object
 	 */
 	public static void doRequest(Method method, String baseUrl, String urlSuffix, String data, RequestCallback requestCallback) {
-		final RequestBuilder requestBuilder = new RequestBuilder(method, urlSuffix != null ? baseUrl + urlSuffix : baseUrl);
+		final var requestBuilder = new RequestBuilder(method, urlSuffix != null ? baseUrl + urlSuffix : baseUrl);
 		requestBuilder.setHeader("Access-Control-Allow-Origin", "*");
 		requestBuilder.setHeader("Access-Control-Allow-Headers", "*");
 		requestBuilder.setHeader("X-Requested-With", "XMLHttpRequest");
