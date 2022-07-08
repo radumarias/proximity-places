@@ -31,7 +31,7 @@
 	</organization>
 
 	<properties>
-		<gwt.snapshot.version>HEAD-SNAPSHOT</gwt.snapshot.version>
+		<gwt.snapshot.version>2.5.1</gwt.snapshot.version>
 		<gwt.release.version>2.8.2</gwt.release.version>
 		<maven.compiler.release>11</maven.compiler.release>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
